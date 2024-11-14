@@ -1,4 +1,4 @@
-# TITLE
+# Toronto Neighbourhood Grocery Vendor Analysis
 
 ## Overview
 
@@ -9,11 +9,9 @@ This repository provides readers with the data and files to understand and repro
 
 The repo is structured as:
 
--   `data` contains the data used within this analysis provided by Project Hammer. 
--   `data/analysis_data` contains the cleaned dataset that was constructed.
+-   `data` contains the data used within this analysis provided by Project Hammer. Here, the SQL file used to prepare the original data can be found. 
 -   `other` contains relevant literature, details about LLM chat interactions, and sketches.
 -   `paper` contains the files used to generate the analysis, including the Quarto document, reference bibliography file, and the final PDF of the paper. 
-
 
 ## Statement on LLM usage
 
