@@ -1,16 +1,21 @@
 ---
-title: "My title"
-subtitle: "My subtitle if needed"
+title: "Analyzing Grocery Pricing Trends of Bacel Products in Toronto"
+subtitle: "Insights from Vendors: Voila, Metro, and No Frills "
 author: 
-  - First author
-  - Another author
-thanks: "Code and data are available at: [https://github.com/RohanAlexander/starter_folder](https://github.com/RohanAlexander/starter_folder)."
+  - Julia Lee
+  - Vandan Patel
+  - Haowei Fan
+  - Tianning He
+  - Max LI
+  - Shuangyuan Yang
 date: today
+thanks: "Code and data are available at: https://github.com/JuliaJLee/grocery_vendor_analysis"
 date-format: long
-abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
+abstract: "This paper analyzes grocery product pricing data from three Toronto vendors (Voila, Metro, and No Frills) using data collected through screen-scraping from Project Hammer. Prices were standardized to 100g units to ensure comparability across vendors. The findings show that there is no correlation between the vendors and the Becel products that are sold. However, a slight pattern is seen that most customers buy products that are in between the range $1.1 and $1.3 per. 100g. "
 format: pdf
 number-sections: true
 bibliography: references.bib
+toc: true
 ---
 
 ```{r}
@@ -31,13 +36,17 @@ data <- read_csv(here::here("data/data.csv"))
 library(stringr)
 data$price_numeric <- as.numeric(str_replace_all(data$price, "\\$|/100g", ""))
 ```
-#Data
 
-The preparation and manipulation of the original data is conducted using SQL [CITE SQL]. The steps to conduct the present analysis on the prepared data are carried out using the statistical programming language, R [CITE R].
 
-The data for this analysis was obtained provided by Project Hammer [CITE DATA], and it contains data about product details (e.g. product names, brands, current prices, and old prices, and units for products) for 8 different grocery vendors (Voila, T&T, Loblaws, No Frills, Metro, Galleria, Walmart Canada, and Save-On-Foods). The data is collected through the process of screen-scraping website UIs from vendors within a neighbourhood in Toronto. Data from Project Hammer is available from February 28, 2024, and as this data is collected by extracting information from grocers' websites, it is possible to have missing data, which is more thoroughly addressed in [CROSS REFERENCE DISCUSSION SECTION]. Through the method of screen scraping, the original data aims to measure and reflect grocery vendor decisions and trends in product pricing. 
 
-For this analysis, three vendors - Voila, Metro, and No Frills - are considered along with their respective pricing for products that are 100g. The "Price" variable for each vendor in this analysis reflects the current price of their products at the time in which the data was downloaded. The variable, "Units", represents the size of products measured using weight metrics (i.e. grams or kilograms) and counts (i.e. the number of items within a given product). In this case, a weight of 100g is selected to ensure consistency in units across products and vendors. 
+
+#Data{#sec-data}
+
+The preparation and manipulation of the original data is conducted using SQL [@SQL]. The steps to conduct the present analysis on the prepared data are carried out using the statistical programming language, R [@citeR].
+
+The data for this analysis was obtained provided by Project Hammer [@data], and it contains data about product details (e.g. product names, brands, current prices, and old prices, and units for products) for 8 different grocery vendors (Voila, T&T, Loblaws, No Frills, Metro, Galleria, Walmart Canada, and Save-On-Foods). The data is collected through the process of screen-scraping website UIs from vendors within a neighbourhood in Toronto. Data from Project Hammer is available from February 28, 2024, and as this data is collected by extracting information from grocers' websites, it is possible to have missing data, which is more thoroughly addressed in @sec-discussion. Through the method of screen scraping, the original data aims to measure and reflect grocery vendor decisions and trends in product pricing. 
+
+For this analysis, three vendors - Voila, Metro, and No Frills - are considered along with their respective pricing for products that are 100g. The "Price" variable for each vendor in this analysis reflects the current price of their products at the time in which the data was downloaded. The variable, "Units", represents the size of products measured using weight metrics (i.e. grams or kilograms) and counts (i.e. the number of items within a given product). In this case, a weight of 100g is selected to ensure consistency in units across products and vendors. It is also important to highlight that this analysis only considers products from the brand, Becel, across the three vendors.
 
 
 
@@ -111,9 +120,11 @@ c2 <- Metro_data$price_numeric
 c3 <- NoFrills_data$price_numeric
 
 min_length <- min(length(c1), length(c2), length(c3))
-voila_price <- c1[1:min_length]
-metro_price <- c2[1:min_length]
-nofrills_price <- c3[1:min_length]
+voila_price <- c1[sample(length(c1), min_length)]
+metro_price <- c2[sample(length(c2), min_length)]
+nofrills_price <- c3[sample(length(c3), min_length)]
 data2 <- data.frame(voila_price, metro_price, nofrills_price)
+
 pairs(data2)
 ```
+# Discussion{#sec-discussion}
