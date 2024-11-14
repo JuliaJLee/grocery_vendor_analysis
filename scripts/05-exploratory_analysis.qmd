@@ -1,0 +1,60 @@
+```{r}
+#### Workspace setup ####
+library(tidyverse)
+data <- read_csv(here::here("data.csv"))
+```
+
+```{r}
+library(stringr)
+data$price_numeric <- as.numeric(str_replace_all(data$price, "\\$|/100g", ""))
+```
+
+```{r}
+
+voila_data <- subset(data, vendor == "Voila")
+
+
+plot_voila <- ggplot(voila_data, aes(x = price_numeric)) +
+  geom_histogram(binwidth = 0.1, fill = "blue", color = "black", alpha = 0.7) +
+  labs(title = "Voila",
+       x = "price/100g",
+       y = "frequence") +
+  theme_minimal()
+
+
+print(plot_voila)
+```
+
+```{r}
+
+
+Metro_data <- subset(data, vendor == "Metro")
+
+
+plot_Metro <- ggplot(Metro_data, aes(x = price_numeric)) +
+  geom_histogram(binwidth = 0.1, fill = "blue", color = "black", alpha = 0.7) +
+  labs(title = "Metro",
+       x = "price/100g",
+       y = "frequence") +
+  theme_minimal()
+
+
+print(plot_Metro)
+```
+
+```{r}
+
+
+NoFrills_data <- subset(data, vendor == "NoFrills")
+
+
+plot_NoFrills <- ggplot(NoFrills_data, aes(x = price_numeric)) +
+  geom_histogram(binwidth = 0.1, fill = "blue", color = "black", alpha = 0.7) +
+  labs(title = "NoFrills",
+       x = "price/100g",
+       y = "frequence") +
+  theme_minimal()
+
+
+print(plot_NoFrills)
+```
