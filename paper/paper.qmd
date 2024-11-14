@@ -37,10 +37,18 @@ library(stringr)
 data$price_numeric <- as.numeric(str_replace_all(data$price, "\\$|/100g", ""))
 ```
 
+# Introduction
+
+In this analysis, we explore grocery product pricing data from three major Toronto retailers: Voila, Metro, and NoFrills. Using a dataset collected through screen-scraping from Project Hammer, we aim to understand differences in product pricing and distribution patterns across these vendors. The data includes pricing information for various products, which we standardized to 100g units to ensure comparability between stores. By performing data cleaning and visualization, this analysis seeks to compare price distributions across vendors and identify any notable trends.
+
+This present analysis first segments the data by vendor, creating subsets for Voila, Metro, and No Frills. For each subset, we visualize the distribution of product prices at each store. These visualizations provide insights into the pricing strategies of each vendor, highlighting the frequency of different price ranges and enabling a side-by-side comparison of pricing trends across these retailers.
+
+Additionally, the analysis examines whether any relationships exist between the price distributions of the three vendors. This enables a direct comparison of prices for similar products across vendors, facilitating a clearer understanding of how pricing might vary between Voila, Metro, and No Frills. Although no correlation was found specifically for Becel products across vendors, a slight pattern emerged, showing that most customers tend to purchase products priced between $1.10 and $1.30 per 100g.
+
+The remainder of this report details the data used in the analysis (@sec-data), the results of the visualizations (@sec-results), and the conclusions drawn from these comparisons (@sec-discussion), highlighting pricing patterns and potential pricing disparities among these vendors.
 
 
-
-#Data{#sec-data}
+#Data {#sec-data}
 
 The preparation and manipulation of the original data is conducted using SQL [@SQL]. The steps to conduct the present analysis on the prepared data are carried out using the statistical programming language, R [@citeR].
 
@@ -48,8 +56,7 @@ The data for this analysis was obtained provided by Project Hammer [@data], and 
 
 For this analysis, three vendors - Voila, Metro, and No Frills - are considered along with their respective pricing for products that are 100g. The "Price" variable for each vendor in this analysis reflects the current price of their products at the time in which the data was downloaded. The variable, "Units", represents the size of products measured using weight metrics (i.e. grams or kilograms) and counts (i.e. the number of items within a given product). In this case, a weight of 100g is selected to ensure consistency in units across products and vendors. It is also important to highlight that this analysis only considers products from the brand, Becel, across the three vendors.
 
-
-
+# Results {#sec-results}
 
 
 
@@ -59,6 +66,7 @@ For this analysis, three vendors - Voila, Metro, and No Frills - are considered 
 #| warning: false
 #| message: false
 #| echo: false
+
 voila_data <- subset(data, vendor == "Voila")
 
 
@@ -127,4 +135,6 @@ data2 <- data.frame(voila_price, metro_price, nofrills_price)
 
 pairs(data2)
 ```
-# Discussion{#sec-discussion}
+
+
+# Discussion {#sec-discussion}
