@@ -1,7 +1,8 @@
 ```{r}
 #### Workspace setup ####
 library(tidyverse)
-data <- read_csv(here::here("data.csv"))
+library(GGally)
+data <- read_csv(here::here("data/data.csv"))
 ```
 
 ```{r}
@@ -58,3 +59,16 @@ plot_NoFrills <- ggplot(NoFrills_data, aes(x = price_numeric)) +
 
 print(plot_NoFrills)
 ```
+```{r}
+c1 <- voila_data$price_numeric
+c2 <- Metro_data$price_numeric
+c3 <- NoFrills_data$price_numeric
+
+min_length <- min(length(c1), length(c2), length(c3))
+voila_price <- c1[1:min_length]
+metro_price <- c2[1:min_length]
+nofrills_price <- c3[1:min_length]
+data2 <- data.frame(voila_price, metro_price, nofrills_price)
+pairs(data2)
+```
+
