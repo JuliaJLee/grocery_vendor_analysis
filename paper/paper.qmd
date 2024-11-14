@@ -14,6 +14,10 @@ bibliography: references.bib
 ---
 
 ```{r}
+#| include: false
+#| warning: false
+#| message: false
+#| echo: false
 #### Workspace setup ####
 library(tidyverse)
 library(GGally)
@@ -21,6 +25,9 @@ data <- read_csv(here::here("data/data.csv"))
 ```
 
 ```{r}
+#| warning: false
+#| message: false
+#| echo: false
 library(stringr)
 data$price_numeric <- as.numeric(str_replace_all(data$price, "\\$|/100g", ""))
 ```
@@ -40,7 +47,9 @@ For this analysis, three vendors - Voila, Metro, and No Frills - are considered 
 
 
 ```{r}
-
+#| warning: false
+#| message: false
+#| echo: false
 voila_data <- subset(data, vendor == "Voila")
 
 
@@ -56,7 +65,9 @@ print(plot_voila)
 ```
 
 ```{r}
-
+#| warning: false
+#| message: false
+#| echo: false
 
 Metro_data <- subset(data, vendor == "Metro")
 
@@ -73,7 +84,9 @@ print(plot_Metro)
 ```
 
 ```{r}
-
+#| warning: false
+#| message: false
+#| echo: false
 
 NoFrills_data <- subset(data, vendor == "NoFrills")
 
@@ -90,6 +103,9 @@ print(plot_NoFrills)
 ```
 
 ```{r}
+#| warning: false
+#| message: false
+#| echo: false
 c1 <- voila_data$price_numeric
 c2 <- Metro_data$price_numeric
 c3 <- NoFrills_data$price_numeric
