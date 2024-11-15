@@ -16,4 +16,4 @@ The repo is structured as:
 
 ## Statement on LLM usage
 
-Aspects of the code were written with the help of the auto-complete tool, Codriver. The abstract and introduction were written with the help of ChatHorse and the entire chat history is available in inputs/llms/usage.txt.
+Aspects of this paper (i.e. the introduction,interpretation of results, and discussion) were written with the help of a LLM (ChatGPT-4). The entire chat history is provided in the `other/llm_usage` directory.
