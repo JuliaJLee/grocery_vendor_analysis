@@ -15,7 +15,6 @@ abstract: "This paper analyzes grocery product pricing data from three Toronto v
 format: pdf
 number-sections: true
 bibliography: references.bib
-toc: true
 ---
 
 ```{r}
@@ -48,7 +47,7 @@ Additionally, the analysis examines whether any relationships exist between the 
 The remainder of this report details the data used in the analysis (@sec-data), the results of the visualizations (@sec-results), and the conclusions drawn from these comparisons (@sec-discussion), highlighting pricing patterns and potential pricing disparities among these vendors.
 
 
-#Data {#sec-data}
+# Data {#sec-data}
 
 The preparation and manipulation of the original data is conducted using SQL [@SQL]. The steps to conduct the present analysis on the prepared data are carried out using the statistical programming language, R [@citeR].
 
@@ -58,71 +57,17 @@ For this analysis, three vendors - Voila, Metro, and No Frills - are considered 
 
 # Results {#sec-results}
 
-
-
-
-
 ```{r}
 #| warning: false
 #| message: false
 #| echo: false
+#| label: fig-scatter
+#| fig-cap: The Relationships between Becel Product Prices from fVoila, Metro, and No Frills
 
 voila_data <- subset(data, vendor == "Voila")
-
-
-plot_voila <- ggplot(voila_data, aes(x = price_numeric)) +
-  geom_histogram(binwidth = 0.1, fill = "blue", color = "black", alpha = 0.7) +
-  labs(title = "Voila",
-       x = "price/100g",
-       y = "frequence") +
-  theme_minimal()
-
-
-print(plot_voila)
-```
-
-```{r}
-#| warning: false
-#| message: false
-#| echo: false
-
 Metro_data <- subset(data, vendor == "Metro")
-
-
-plot_Metro <- ggplot(Metro_data, aes(x = price_numeric)) +
-  geom_histogram(binwidth = 0.1, fill = "blue", color = "black", alpha = 0.7) +
-  labs(title = "Metro",
-       x = "price/100g",
-       y = "frequence") +
-  theme_minimal()
-
-
-print(plot_Metro)
-```
-
-```{r}
-#| warning: false
-#| message: false
-#| echo: false
-
 NoFrills_data <- subset(data, vendor == "NoFrills")
 
-
-plot_NoFrills <- ggplot(NoFrills_data, aes(x = price_numeric)) +
-  geom_histogram(binwidth = 0.1, fill = "blue", color = "black", alpha = 0.7) +
-  labs(title = "NoFrills",
-       x = "price/100g",
-       y = "frequence") +
-  theme_minimal()
-
-
-print(plot_NoFrills)
-```
-
-```{r}
-#| warning: false
-#| message: false
-#| echo: false
 c1 <- voila_data$price_numeric
 c2 <- Metro_data$price_numeric
 c3 <- NoFrills_data$price_numeric
@@ -135,6 +80,88 @@ data2 <- data.frame(voila_price, metro_price, nofrills_price)
 
 pairs(data2)
 ```
+\newpage
+
+@fig-scatter shows a pairwise scatter plot matrix of the price distribution of Voila, Metro, and No Frills. It can be seen from the figure that the prices of Voila and Metro are mainly concentrated between 1.0 and 1.3, while the price of No Frills is bimodal, with peaks at 0.9 and 1.2 respectively. Overall, there is a certain overlap in the pricing strategies of the three brands (in the range of 1.0 to 1.3). The prices of Voila and Metro are more concentrated, which may indicate that their pricing is more uniform and their target markets may be similar. However, No Frills has some differences from them. The bimodal distribution of No Frills' prices reflects that it has formulated diversified pricing strategies for different consumer groups, which may attract low-price consumers and cover part of the mid-to-high-price market. This difference indicates that the three may have different competitive strategies in terms of market positioning and target consumers.
+
+\newpage
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+#| label: fig-voila
+#| fig-cap: Distribution of the Number of Becel Products Sold Across Different Prices from Voila
+
+voila_data <- subset(data, vendor == "Voila")
+
+
+plot_voila <- ggplot(voila_data, aes(x = price_numeric)) +
+  geom_histogram(binwidth = 0.1, fill = "blue", color = "black", alpha = 0.7) +
+  labs(title = "Voila",
+       x = "Price/100g",
+       y = "Number of Products Bought") +
+  theme_minimal()
+
+
+print(plot_voila)
+```
+@fig-voila illustrates the distribution of Voila’s price per 100g. The horizontal axis represents the price per 100g, while the vertical axis denotes the frequency of occurrence. The distribution is right-skewed, with most values concentrated between approximately 1.0 and 1.2 price units per 100g. The highest frequency, exceeding 1,500 occurrences, is observed around the 1.2 price mark. There are fewer products priced below 1.0, and very few exceed 1.5. This indicates that Voila’s prices are predominantly clustered around 1.2 per 100g, with some outliers on the lower and higher ends.
+
+\newpage
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+#| label: fig-metro
+#| fig-cap: Distribution of the Number of Becel Products Sold Across Different Prices from Metro
+
+Metro_data <- subset(data, vendor == "Metro")
+
+
+plot_Metro <- ggplot(Metro_data, aes(x = price_numeric)) +
+  geom_histogram(binwidth = 0.1, fill = "blue", color = "black", alpha = 0.7) +
+  labs(title = "Metro",
+       x = "Price/100g",
+       y = "Number of Products Bought") +
+  theme_minimal()
+
+
+print(plot_Metro)
+```
+@fig-metro represents the distribution of Metro’s price per 100g. The horizontal axis shows the price per 100g, while the vertical axis indicates the frequency of occurrences. The distribution is slightly right-skewed, with the majority of prices clustered between approximately 1.0 and 1.3 price units per 100g. The highest frequency, around 900 occurrences, is observed near the 1.2 price mark. A smaller number of items are priced below 1.0, and there are few outliers above 1.5. This suggests that Metro’s prices predominantly fall within the 1.0–1.3 range, with a peak at 1.2.
+
+\newpage
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+#| label: fig-nofrills
+#| fig-cap: Distribution of the Number of Becel Products Sold Across Different Prices from No Frills
+
+NoFrills_data <- subset(data, vendor == "NoFrills")
+
+
+plot_NoFrills <- ggplot(NoFrills_data, aes(x = price_numeric)) +
+  geom_histogram(binwidth = 0.1, fill = "blue", color = "black", alpha = 0.7) +
+  labs(title = "No Frills",
+       x = "Price/100g",
+       y = "Number of Products Bought") +
+  theme_minimal()
+
+
+print(plot_NoFrills)
+```
+
+@fig-nofrills illustrates the distribution of No Frills’ price per 100g. The horizontal axis represents the price per 100g, and the vertical axis indicates the frequency of occurrences. The distribution is bimodal, with significant peaks around 0.9 and 1.2 price units per 100g. The highest frequency, exceeding 1,000 occurrences, is observed at the 1.2 price mark. A smaller but notable peak is visible around 0.9, with fewer items priced below this range or above 1.5. This suggests that No Frills’ prices are primarily concentrated at two levels, with the higher peak being more dominant.
 
 
 # Discussion {#sec-discussion}
+
+
+
+\newpage
+
+# References
