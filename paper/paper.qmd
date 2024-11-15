@@ -1,6 +1,6 @@
 ---
-title: "Analyzing Grocery Pricing Trends of Bacel Products in Toronto"
-subtitle: "Insights from Vendors: Voila, Metro, and No Frills "
+title: "Analyzing Grocery Pricing Trends of Becel Products from Vendors in Toronto"
+subtitle: "While Voila, Metro, and No Frills may position their prices for Becel products within a similar range, their respective Becel pricing strategies do not appear to be correlated with one another"
 author: 
   - Julia Lee
   - Vandan Patel
@@ -11,7 +11,7 @@ author:
 date: today
 thanks: "Code and data are available at: https://github.com/JuliaJLee/grocery_vendor_analysis"
 date-format: long
-abstract: "This paper analyzes grocery product pricing data from three Toronto vendors (Voila, Metro, and No Frills) using data collected through screen-scraping from Project Hammer. Prices were standardized to 100g units to ensure comparability across vendors. The findings show that there is no correlation between the vendors and the Becel products that are sold. However, a slight pattern is seen that most customers buy products that are in between the range $1.1 and $1.3 per 100g. "
+abstract: "This paper analyzes grocery product pricing data from three Toronto vendors (Voila, Metro, and No Frills) using data collected through screen-scraping from Project Hammer. Prices were standardized to 100g units to ensure comparability across vendors. The findings show that there is no correlation between the vendors and the Becel products that are sold. However, a slight pattern is seen that most customers buy products that are in between the range $1.10 and $1.30 per 100g. "
 format: pdf
 number-sections: true
 bibliography: references.bib
