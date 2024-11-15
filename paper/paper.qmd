@@ -1,6 +1,6 @@
 ---
 title: "Analyzing Grocery Pricing Trends of Becel Products from Vendors in Toronto"
-subtitle: "While Voila, Metro, and No Frills may position their prices for Becel products within a similar range, their respective Becel pricing strategies do not appear to be correlated with one another"
+subtitle: "While Voila, Metro, and No Frills may position their prices for Becel products within a similar range, Becel pricing does not exhibit uniformity across these vendors"
 author: 
   - Julia Lee
   - Vandan Patel
