@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository provides readers with the data and files to understand and reproduce an analysis on grocercy vendors within a neighbourhood within Toroton
+This repository provides readers with the data and files to understand and reproduce an analysis on grocercy vendors within a neighbourhood within Toronto.
 
 
 ## File Structure
