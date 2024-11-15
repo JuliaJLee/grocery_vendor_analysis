@@ -55,6 +55,8 @@ The data for this analysis was obtained provided by Project Hammer [@data], and 
 
 For this analysis, three vendors - Voila, Metro, and No Frills - are considered along with their respective pricing for products that are 100g. The "Price" variable for each vendor in this analysis reflects the current price of their products at the time in which the data was downloaded. The variable, "Units", represents the size of products measured using weight metrics (i.e. grams or kilograms) and counts (i.e. the number of items within a given product). In this case, a weight of 100g is selected to ensure consistency in units across products and vendors. It is also important to highlight that this analysis only considers products from the brand, Becel, across the three vendors.
 
+\newpage
+
 # Results {#sec-results}
 
 ```{r}
