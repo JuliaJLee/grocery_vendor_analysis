@@ -11,7 +11,7 @@ author:
 date: today
 thanks: "Code and data are available at: https://github.com/JuliaJLee/grocery_vendor_analysis"
 date-format: long
-abstract: "This paper analyzes grocery product pricing data from three Toronto vendors (Voila, Metro, and No Frills) using data collected through screen-scraping from Project Hammer. Prices were standardized to 100g units to ensure comparability across vendors. The findings show that there is no correlation between the vendors and the Becel products that are sold. However, a slight pattern is seen that most customers buy products that are in between the range $1.1 and $1.3 per. 100g. "
+abstract: "This paper analyzes grocery product pricing data from three Toronto vendors (Voila, Metro, and No Frills) using data collected through screen-scraping from Project Hammer. Prices were standardized to 100g units to ensure comparability across vendors. The findings show that there is no correlation between the vendors and the Becel products that are sold. However, a slight pattern is seen that most customers buy products that are in between the range $1.1 and $1.3 per 100g. "
 format: pdf
 number-sections: true
 bibliography: references.bib
@@ -82,7 +82,6 @@ data2 <- data.frame(voila_price, metro_price, nofrills_price)
 
 pairs(data2)
 ```
-\newpage
 
 @fig-scatter shows a pairwise scatter plot matrix of the price distribution of Voila, Metro, and No Frills. It can be seen from the figure that the prices of Voila and Metro are mainly concentrated between 1.0 and 1.3, while the price of No Frills is bimodal, with peaks at 0.9 and 1.2 respectively. Overall, there is a certain overlap in the pricing strategies of the three brands (in the range of 1.0 to 1.3). The prices of Voila and Metro are more concentrated, which may indicate that their pricing is more uniform and their target markets may be similar. However, No Frills has some differences from them. The bimodal distribution of No Frills' prices reflects that it has formulated diversified pricing strategies for different consumer groups, which may attract low-price consumers and cover part of the mid-to-high-price market. This difference indicates that the three may have different competitive strategies in terms of market positioning and target consumers.
 
@@ -162,7 +161,26 @@ print(plot_NoFrills)
 
 # Discussion {#sec-discussion}
 
+The analysis of grocery product pricing data from Voila, Metro, and No Frills reveals a consistent pricing range for most products, particularly between $1.10 and $1.30 per 100g. This range suggests that these vendors are pricing their products competitively to appeal to cost-sensitive consumers in the Toronto market. The standardized approach, converting all product prices to a per-100g basis, provides a clear picture of pricing patterns across these stores, allowing for straightforward comparisons and a deeper understanding of each vendor's pricing strategy.
 
+Focusing specifically on Becel products, the analysis found no direct correlation between the vendors in terms of pricing for this brand. This indicates that while the vendors may position themselves within a similar price range for other products, Becel pricing does not exhibit uniformity across retailers. Instead, each vendor appears to set Becel prices independently, potentially reflecting different sourcing agreements or sales strategies. However, the general consistency in the pricing range suggests a shared approach to targeting typical customer expectations, particularly for items with established price points.
+
+These findings highlight that while there may not be a strict alignment in pricing specific brands, such as Becel, there is a broader trend of pricing standardization that caters to a competitive and customer-focused market. Future research could expand upon this by examining other brands or analyzing data over multiple time points to capture trends and fluctuations that single-point analysis cannot reveal. Such an approach would provide a more comprehensive picture of vendor strategies and how they adjust prices in response to market dynamics.
+
+## A Note on Correlation vs. Causation 
+
+As this analysis looks to examine the relationships between vendors in terms of pricing with Becel products, it focuses on whether there is a correlation between vendors and their pricing strategies. Causal conclusions cannot be made in the present analysis by reason that a careful experimental design was not employed to investigate whether one vendor's pricing is the result of another vendor's pricing decisions. To this, a future step may be to design an experiment that looks at how a change in one vendor's price for their Becel products impacts the subsequent prices decisions made by other vendors. 
+
+## Missing Data
+
+The possibility of having missing data within the original dataset provided by Project Hammer was briefly mentioned in @sec-data. This analysis narrows its focus to consider only three vendors as well as one specific brand, and for this reason, the analysis data that was used in the present project did not have any missing values. However, it is still important to consider the possibility of missing values within the original dataset as it is important to have an understanding of the source in which the data within this analysis comes from. 
+
+## Sources of Bias
+
+The data collected through screen-scraping is potentially subject to selection bias. Since the scraping process may not capture every product from each vendor, there could be unintentional omissions that skew the dataset. Additionally, focusing solely on three specific vendors—Voila, Metro, and No Frills—limits the generalizability of the findings. This selection bias may impact the representativeness of the pricing patterns observed and should be considered when interpreting the results.
+
+## Limitations
+This analysis is constrained by the observational nature of the dataset and the use of data from a single time point. Seasonal variations, temporary promotions, and price fluctuations that could affect customer purchasing decisions are not captured in this snapshot, limiting the conclusions to this specific timeframe. Moreover, while standardizing prices to 100g units allows for comparability, it may overlook vendor-specific pricing incentives such as multi-unit discounts, packaging variations, or bulk pricing, which can influence overall customer perception of value.
 
 \newpage
 
